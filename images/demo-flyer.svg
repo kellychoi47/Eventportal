@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" role="img" aria-label="Generic public event invitation flyer">
+  <rect width="1080" height="1350" fill="#fff"/>
+  <rect width="1080" height="520" fill="#eadfd3"/>
+  <path d="M0 442c178-72 330-90 494-40 174 53 334 100 586 4v944H0z" fill="#fbf7ef"/>
+  <rect x="112" y="126" width="856" height="1090" rx="44" fill="#fff" stroke="#eadfd3" stroke-width="5"/>
+  <text x="540" y="330" text-anchor="middle" fill="#2b1a12" font-family="Inter, Arial, sans-serif" font-size="82" font-weight="900">COMMUNITY</text>
+  <text x="540" y="430" text-anchor="middle" fill="#5b8b61" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="900">WORKSHOP</text>
+  <text x="540" y="570" text-anchor="middle" fill="#7d716a" font-family="Inter, Arial, sans-serif" font-size="34">You are invited to a free public session.</text>
+  <text x="540" y="720" text-anchor="middle" fill="#2b1a12" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="800">Demo Event Center</text>
+  <text x="540" y="810" text-anchor="middle" fill="#2b1a12" font-family="Inter, Arial, sans-serif" font-size="34">100 Main Street</text>
+  <text x="540" y="858" text-anchor="middle" fill="#2b1a12" font-family="Inter, Arial, sans-serif" font-size="34">Sample City, ST 12345</text>
+  <text x="540" y="1020" text-anchor="middle" fill="#2b1a12" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">eventdemo.example</text>
+</svg>

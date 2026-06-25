@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event Information Portal Demo - Team Search</title>
+  <meta name="description" content="Search Event Information Portal Demo event team information." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Event Information Portal Demo - Team Search" />
+  <meta property="og:description" content="Search your Event Information Portal Demo event team." />
+  <meta property="og:image" content="images/demo-icon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="images/demo-icon.svg" />
+  <link rel="stylesheet" href="preaching.css?v=20260610" />
+</head>
+<body>
+  <main class="preaching-page">
+    <section class="content-card">
+      <h1>Event Information Portal Demo - Team Search</h1>
+      <div class="search-box">
+        <label class="sr-only" for="preachingSearch">Search first and last name</label>
+        <input class="search-input" id="preachingSearch" type="search" autocomplete="off" placeholder="Search first and last name" />
+        <div class="autocomplete-list" id="preachingSuggestions" hidden></div>
+      </div>
+      <div class="preaching-list" id="preachingList" aria-live="polite">
+        <div class="info-box">Loading preaching information...</div>
+      </div>
+      <a class="big-button upload-photos-button" id="uploadPhotosButton" href="https://example.com/demo-form" target="_blank" rel="noopener">Upload Team Photos</a>
+    </section>
+  </main>
+
+  <script src="preaching.js?v=20260610"></script>
+</body>
+</html>

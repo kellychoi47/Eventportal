@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420" role="img" aria-label="Event Information Portal Demo banner">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf7ef"/>
+      <stop offset="0.52" stop-color="#fff"/>
+      <stop offset="1" stop-color="#eef6f0"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c9a663"/>
+      <stop offset="1" stop-color="#6b4aa0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="420" fill="url(#bg)"/>
+  <path d="M0 360C202 248 348 427 560 301c187-111 365-92 510-12 118 66 226 45 330-19v150H0z" fill="#eadfd3" opacity=".52"/>
+  <path d="M72 48h1256v324H72z" fill="#fff" opacity=".62" stroke="#eadfd3" stroke-width="3"/>
+  <path d="M151 70 438 350M1250 60 978 350M260 54l260 260M1130 74 880 330" stroke="url(#line)" stroke-width="5" opacity=".28"/>
+  <text x="700" y="150" text-anchor="middle" fill="#2b1a12" font-family="Inter, Arial, sans-serif" font-size="54" font-weight="800">Event Information Portal Demo</text>
+  <text x="700" y="220" text-anchor="middle" fill="#5b514b" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="600">Sample Conference Guide</text>
+  <text x="700" y="286" text-anchor="middle" fill="#7d716a" font-family="Inter, Arial, sans-serif" font-size="24">June 7-11, 2026</text>
+</svg>

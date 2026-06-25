@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Event portal icon">
+  <rect x="54" y="54" width="916" height="916" rx="180" fill="#fff" stroke="#e7def5" stroke-width="22"/>
+  <rect x="246" y="250" width="532" height="460" rx="52" fill="#f4f0f8"/>
+  <path d="M326 394h372M326 514h372M326 634h220" stroke="#6b4aa0" stroke-width="56" stroke-linecap="round"/>
+  <circle cx="724" cy="656" r="58" fill="#c9a663"/>
+</svg>

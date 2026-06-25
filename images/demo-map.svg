@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-label="Generic venue map">
+  <rect width="1000" height="620" fill="#fbf7ef"/>
+  <rect x="90" y="80" width="820" height="460" rx="30" fill="#fff" stroke="#dfeadd" stroke-width="4"/>
+  <rect x="150" y="140" width="250" height="140" rx="18" fill="#f1f7f1" stroke="#5b8b61" stroke-width="4"/>
+  <rect x="450" y="140" width="380" height="140" rx="18" fill="#fbf4e8" stroke="#bd892a" stroke-width="4"/>
+  <rect x="150" y="330" width="300" height="150" rx="18" fill="#eff3f8" stroke="#4a6f9c" stroke-width="4"/>
+  <rect x="500" y="330" width="330" height="150" rx="18" fill="#fbefeb" stroke="#c95f49" stroke-width="4"/>
+  <path d="M410 210h42M640 280v52M450 405h50" stroke="#7d716a" stroke-width="10" stroke-linecap="round"/>
+  <text x="500" y="574" text-anchor="middle" fill="#7d716a" font-family="Inter, Arial, sans-serif" font-size="26">Generic venue map</text>
+</svg>

@@ -1,0 +1,57 @@
+{
+  "dates": [
+    {
+      "date": "2026-06-07",
+      "label": "June 7",
+      "items": [
+        { "time": "3:00 PM", "title": "Guest Check-in" },
+        { "time": "4:00 PM", "title": "Welcome Orientation" },
+        { "time": "6:00 PM", "title": "Dinner" },
+        { "time": "7:30 PM", "title": "Opening Session" }
+      ]
+    },
+    {
+      "date": "2026-06-08",
+      "label": "June 8",
+      "items": [
+        { "time": "7:30 AM", "title": "Breakfast" },
+        { "time": "9:00 AM", "title": "Keynote Workshop" },
+        { "time": "12:00 PM", "title": "Lunch" },
+        { "time": "2:00 PM", "title": "Breakout Sessions" },
+        { "time": "6:00 PM", "title": "Dinner" }
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "label": "June 9",
+      "items": [
+        { "time": "7:30 AM", "title": "Breakfast" },
+        { "time": "9:00 AM", "title": "Group Training" },
+        { "time": "12:00 PM", "title": "Lunch" },
+        { "time": "3:00 PM", "title": "Team Activity" },
+        { "time": "7:00 PM", "title": "Evening Program" }
+      ]
+    },
+    {
+      "date": "2026-06-10",
+      "label": "June 10",
+      "items": [
+        { "time": "7:30 AM", "title": "Breakfast" },
+        { "time": "9:00 AM", "title": "Community Outreach" },
+        { "time": "12:00 PM", "title": "Lunch" },
+        { "time": "2:00 PM", "title": "Project Lab" },
+        { "time": "6:00 PM", "title": "Dinner" }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "label": "June 11",
+      "items": [
+        { "time": "8:00 AM", "title": "Breakfast" },
+        { "time": "10:00 AM", "title": "Closing Session" },
+        { "time": "12:00 PM", "title": "Lunch" },
+        { "time": "1:30 PM", "title": "Departure" }
+      ]
+    }
+  ]
+}

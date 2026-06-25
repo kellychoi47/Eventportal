@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-label="Generic event information card">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffaf2"/>
+      <stop offset="1" stop-color="#f1f7f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="620" fill="url(#bg)"/>
+  <rect x="80" y="74" width="840" height="472" rx="38" fill="#fff" stroke="#eadfd3" stroke-width="4"/>
+  <circle cx="500" cy="260" r="78" fill="#f4f0f8"/>
+  <path d="M462 260h76M500 222v76" stroke="#6b4aa0" stroke-width="18" stroke-linecap="round"/>
+  <text x="500" y="392" text-anchor="middle" fill="#2b1a12" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800">Demo Asset</text>
+  <text x="500" y="446" text-anchor="middle" fill="#7d716a" font-family="Inter, Arial, sans-serif" font-size="24">Replace with your own event image</text>
+</svg>

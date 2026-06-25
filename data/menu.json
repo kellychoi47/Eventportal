@@ -1,0 +1,47 @@
+{
+  "dates": [
+    {
+      "date": "2026-06-07",
+      "label": "June 7",
+      "items": [
+        { "meal": "Dinner", "description": "Pasta, garden salad, roasted vegetables" },
+        { "meal": "Dessert", "description": "Assorted cookies and fruit" }
+      ]
+    },
+    {
+      "date": "2026-06-08",
+      "label": "June 8",
+      "items": [
+        { "meal": "Breakfast", "description": "Eggs, toast, yogurt, coffee" },
+        { "meal": "Lunch", "description": "Turkey wraps, chips, fruit cups" },
+        { "meal": "Dinner", "description": "Grilled chicken, rice, seasonal vegetables" }
+      ]
+    },
+    {
+      "date": "2026-06-09",
+      "label": "June 9",
+      "items": [
+        { "meal": "Breakfast", "description": "Oatmeal, berries, muffins" },
+        { "meal": "Lunch", "description": "Sandwich bar, soup, salad" },
+        { "meal": "Dinner", "description": "Taco bowls, beans, corn, salsa" }
+      ]
+    },
+    {
+      "date": "2026-06-10",
+      "label": "June 10",
+      "items": [
+        { "meal": "Breakfast", "description": "Bagels, fruit, scrambled eggs" },
+        { "meal": "Lunch", "description": "Chicken salad, rolls, lemonade" },
+        { "meal": "Dinner", "description": "Vegetarian curry, rice, cucumber salad" }
+      ]
+    },
+    {
+      "date": "2026-06-11",
+      "label": "June 11",
+      "items": [
+        { "meal": "Breakfast", "description": "Breakfast sandwiches, fruit, coffee" },
+        { "meal": "Lunch", "description": "Boxed lunch for departure" }
+      ]
+    }
+  ]
+}
