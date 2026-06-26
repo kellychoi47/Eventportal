@@ -289,6 +289,30 @@
           </div>
         </div>
 
+        <div class="accordion" data-accordion data-theme="feedback">
+          <button class="accordion-header" data-toggle>
+            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg></span><span class="label">Feedback Form</span></div>
+            <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="content-card">
+              <form class="feedback-form" id="feedbackForm">
+                <p class="section-note">This portfolio demo stores feedback only in this browser and does not send it to an external service.</p>
+                <label>Name <span>optional</span><input id="feedbackName" name="name" type="text" autocomplete="name" /></label>
+                <label>Overall experience <span>required</span><select id="feedbackExperience" name="experience" required><option value="">Select one</option><option>Excellent</option><option>Good</option><option>Okay</option><option>Needs improvement</option></select></label>
+                <label>Most helpful section <span>required</span><select id="feedbackSection" name="section" required><option value="">Select one</option><option>Announcements</option><option>Schedule</option><option>Event Guide</option><option>Team Search</option><option>Departure Transportation</option><option>Lodging</option><option>Meals</option></select></label>
+                <label>Comments <span>optional</span><textarea id="feedbackComments" name="comments" rows="4"></textarea></label>
+                <a class="big-button" href="https://docs.google.com/forms/u/0/" target="_blank" rel="noopener">Open Demo Google Form</a>
+                <div class="feedback-actions">
+                  <button class="big-button" type="submit">Submit Feedback</button>
+                  <button class="secondary-button" id="resetFeedbackForm" type="button">Reset Form</button>
+                </div>
+                <p class="feedback-message" id="feedbackMessage" role="status"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <footer class="site-footer">
