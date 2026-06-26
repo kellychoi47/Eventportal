@@ -24,9 +24,9 @@ If a date has no items, use `"items": []`. The website will show:
 Information will be updated soon.
 ```
 
-## Menu
+## Meals
 
-Edit `menu.json` to update the Menu tab.
+The current public demo renders fictional meals from `script.js`.
 
 Each date object should keep this shape:
 
@@ -40,8 +40,8 @@ Each date object should keep this shape:
 }
 ```
 
-## Announcements And Team Search
+## Announcements And Attendee Search
 
-For the public demo, announcements and team search use sample data directly in `script.js` and `preaching.js`.
+For the public demo, announcements and attendee search use fictional sample data directly in `script.js` and `attendee-search.js`.
 
 No real Google Sheet, form URL, password, phone number, private event location, or identifiable attendee data is included in this repository.

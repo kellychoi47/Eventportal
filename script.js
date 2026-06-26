@@ -152,50 +152,7 @@ document.addEventListener('keydown', (event) => {
 
 const accordions = document.querySelectorAll('[data-accordion]');
 const helpBox = document.querySelector('.help-box');
-const fallbackScheduleData = {
-  dates: [
-    { date: '2026-06-07', label: 'June 7', items: [] },
-    {
-      date: '2026-06-08',
-      label: 'June 8',
-      items: [
-        { time: '7:00 AM', title: 'Breakfast' },
-        { time: '8:00 AM', title: 'Morning Education' },
-        { time: '9:00 AM', title: 'Opening Session' },
-        { time: '12:30 PM', title: 'Lunch' },
-        { time: '2:00 PM', title: 'Group Discussion' },
-        { time: '6:00 PM', title: 'Dinner / End of Day' }
-      ]
-    },
-    { date: '2026-06-09', label: 'June 9', items: [] },
-    { date: '2026-06-10', label: 'June 10', items: [] },
-    { date: '2026-06-11', label: 'June 11', items: [] }
-  ]
-};
-const fallbackMenuData = {
-  dates: [
-    { date: '2026-06-07', label: 'June 7', items: [] },
-    {
-      date: '2026-06-08',
-      label: 'June 8',
-      items: [
-        { meal: 'Breakfast', description: 'Bagels, fruit, yogurt, coffee' },
-        { meal: 'Lunch', description: 'Chicken wraps, salad, chips, juice' },
-        { meal: 'Dinner', description: 'Rice, bulgogi, vegetables, soup' },
-        { meal: 'Snack', description: 'Cookies, tea, bottled water' }
-      ]
-    },
-    { date: '2026-06-09', label: 'June 9', items: [] },
-    { date: '2026-06-10', label: 'June 10', items: [] },
-    { date: '2026-06-11', label: 'June 11', items: [] }
-  ]
-};
-let scheduleDataCache = fallbackScheduleData;
-let menuDataCache = fallbackMenuData;
-let scheduleDataLoaded = true;
-let menuDataLoaded = true;
-let preachingTeamsCache = [];
-const demoSheetData = {
+const demoData = {
   announcements: [
     {
       PostedDateTime: '2026-06-07T08:00:00-04:00',
@@ -205,34 +162,142 @@ const demoSheetData = {
     },
     {
       PostedDateTime: '2026-06-08T18:30:00-04:00',
-      Announcement: 'Please check the schedule tab for updated workshop room assignments.',
+      Announcement: 'Workshop rooms have been updated. Please review the Schedule section before your afternoon session.',
+      NewExpiresAt: '',
+      Active: 'TRUE'
+    },
+    {
+      PostedDateTime: '2026-06-09T07:45:00-04:00',
+      Announcement: 'Breakfast service begins at 8:00 AM in the dining hall.',
       NewExpiresAt: '',
       Active: 'TRUE'
     }
   ],
-  preaching: [
-    {
-      TeamName: 'Demo Team A',
-      Driver: 'Alex Morgan',
-      Member1: 'Grace Lee',
-      Member2: 'Daniel Kim',
-      Member3: 'Sarah Chen',
-      Car: 'White minivan',
-      Location1: 'Downtown Plaza',
-      Location2: 'Main Street Market',
-      Active: 'TRUE'
-    },
-    {
-      TeamName: 'Demo Team B',
-      Driver: 'Taylor Brooks',
-      Member1: 'Daniel Rivera',
-      Member2: 'Maya Patel',
-      Member3: 'Jordan Smith',
-      Car: 'Blue sedan',
-      Location1: 'Central Park Entrance',
-      Location2: 'Community Library',
-      Active: 'TRUE'
-    }
+  schedule: {
+    dates: [
+      {
+        date: '2026-06-07',
+        label: 'June 7',
+        items: [
+          { time: '2:00 PM', title: 'Arrival and welcome desk check-in' },
+          { time: '4:00 PM', title: 'Orientation walkthrough' },
+          { time: '6:00 PM', title: 'Community dinner' }
+        ]
+      },
+      {
+        date: '2026-06-08',
+        label: 'June 8',
+        items: [
+          { time: '7:30 AM', title: 'Breakfast' },
+          { time: '9:00 AM', title: 'Opening session' },
+          { time: '11:00 AM', title: 'Breakout workshops' },
+          { time: '12:30 PM', title: 'Lunch' },
+          { time: '2:00 PM', title: 'Group discussion' },
+          { time: '6:00 PM', title: 'Dinner' }
+        ]
+      },
+      {
+        date: '2026-06-09',
+        label: 'June 9',
+        items: [
+          { time: '8:00 AM', title: 'Breakfast' },
+          { time: '9:30 AM', title: 'Project lab' },
+          { time: '1:00 PM', title: 'Lunch' },
+          { time: '3:00 PM', title: 'Team activity' }
+        ]
+      },
+      {
+        date: '2026-06-10',
+        label: 'June 10',
+        items: [
+          { time: '8:00 AM', title: 'Breakfast' },
+          { time: '10:00 AM', title: 'Practice presentations' },
+          { time: '12:30 PM', title: 'Lunch' },
+          { time: '5:30 PM', title: 'Closing dinner' }
+        ]
+      },
+      {
+        date: '2026-06-11',
+        label: 'June 11',
+        items: [
+          { time: '8:00 AM', title: 'Grab-and-go breakfast' },
+          { time: '9:00 AM', title: 'Checkout and departure support' },
+          { time: '11:00 AM', title: 'Final shuttle group departs' }
+        ]
+      }
+    ]
+  },
+  meals: {
+    dates: [
+      {
+        date: '2026-06-07',
+        label: 'June 7',
+        items: [
+          { meal: 'Dinner', description: 'Pasta bar, roasted vegetables, salad, sparkling water' }
+        ]
+      },
+      {
+        date: '2026-06-08',
+        label: 'June 8',
+        items: [
+          { meal: 'Breakfast', description: 'Bagels, fruit, yogurt, coffee' },
+          { meal: 'Lunch', description: 'Chicken wraps, salad, chips, juice' },
+          { meal: 'Dinner', description: 'Rice bowls, vegetables, soup' },
+          { meal: 'Snack', description: 'Cookies, tea, bottled water' }
+        ]
+      },
+      {
+        date: '2026-06-09',
+        label: 'June 9',
+        items: [
+          { meal: 'Breakfast', description: 'Oatmeal, eggs, fruit, coffee' },
+          { meal: 'Lunch', description: 'Turkey sandwiches, salad, lemonade' },
+          { meal: 'Dinner', description: 'Taco station, beans, rice, fruit' }
+        ]
+      },
+      {
+        date: '2026-06-10',
+        label: 'June 10',
+        items: [
+          { meal: 'Breakfast', description: 'Muffins, yogurt, bananas, coffee' },
+          { meal: 'Lunch', description: 'Vegetable pasta, salad, iced tea' },
+          { meal: 'Dinner', description: 'Family-style dinner with dessert' }
+        ]
+      },
+      {
+        date: '2026-06-11',
+        label: 'June 11',
+        items: [
+          { meal: 'Breakfast', description: 'Grab-and-go breakfast boxes' }
+        ]
+      }
+    ]
+  },
+  attendees: [
+    { name: 'Maya Thompson', role: 'Participant', group: 'Blue Group', room: 'Room A-204', track: 'Leadership Track' },
+    { name: 'Daniel Kim', role: 'Participant', group: 'Green Group', room: 'Room B-118', track: 'Operations Track' },
+    { name: 'Olivia Martinez', role: 'Participant', group: 'Gold Group', room: 'Room A-212', track: 'Workshop Track' },
+    { name: 'Ethan Williams', role: 'Volunteer', group: 'Blue Group', room: 'Room C-101', track: 'Support Track' },
+    { name: 'Sophia Patel', role: 'Participant', group: 'Green Group', room: 'Room B-122', track: 'Leadership Track' },
+    { name: 'Marcus Johnson', role: 'Participant', group: 'Gold Group', room: 'Room A-208', track: 'Operations Track' },
+    { name: 'Chloe Anderson', role: 'Volunteer', group: 'Blue Group', room: 'Room C-104', track: 'Support Track' },
+    { name: 'Noah Lee', role: 'Participant', group: 'Green Group', room: 'Room B-120', track: 'Workshop Track' },
+    { name: 'Isabella Garcia', role: 'Participant', group: 'Gold Group', room: 'Room A-210', track: 'Leadership Track' },
+    { name: 'Liam Robinson', role: 'Participant', group: 'Blue Group', room: 'Room C-108', track: 'Operations Track' },
+    { name: 'Ava Nguyen', role: 'Volunteer', group: 'Green Group', room: 'Room B-124', track: 'Support Track' },
+    { name: 'Jordan Davis', role: 'Participant', group: 'Gold Group', room: 'Room A-206', track: 'Workshop Track' }
+  ],
+  transportation: [
+    { time: '8:30 AM', title: 'Group A departure staging at the east entrance' },
+    { time: '9:15 AM', title: 'Group B departure staging at the east entrance' },
+    { time: '10:00 AM', title: 'Final luggage check and rideshare pickup window' }
+  ],
+  weather: [
+    { date: '2026-06-07', high: 76, low: 62, condition: 'Partly cloudy', precip: 12 },
+    { date: '2026-06-08', high: 78, low: 63, condition: 'Sunny', precip: 8 },
+    { date: '2026-06-09', high: 75, low: 61, condition: 'Cloudy', precip: 18 },
+    { date: '2026-06-10', high: 77, low: 64, condition: 'Sunny', precip: 10 },
+    { date: '2026-06-11', high: 74, low: 60, condition: 'Partly cloudy', precip: 14 }
   ]
 };
 
@@ -309,17 +374,6 @@ const toggleHelpBox = () => {
   helpBox.classList.toggle('open', !wasOpen);
 };
 
-const attachSubRowHandlers = (scope = document) => {
-  scope.querySelectorAll('.sub-row').forEach((row) => {
-    if (row.dataset.bound === 'true') return;
-    row.dataset.bound = 'true';
-
-    row.addEventListener('click', () => {
-      toggleSubRow(row);
-    });
-  });
-};
-
 const selectMapButton = (button) => {
   const image = document.getElementById(button.dataset.mapTarget);
   const group = button.closest('.pill-tabs');
@@ -331,20 +385,11 @@ const selectMapButton = (button) => {
   image.alt = button.dataset.mapAlt || button.textContent.trim();
 };
 
-const attachMapButtons = (scope = document) => {
-  scope.querySelectorAll('[data-map-button]').forEach((button) => {
-    if (button.dataset.mapBound === 'true') return;
-    button.dataset.mapBound = 'true';
-
-    button.addEventListener('click', () => {
-      selectMapButton(button);
-    });
-  });
-};
-
 const imageModal = document.getElementById('imageModal');
 const imageModalImg = document.getElementById('imageModalImg');
 const imageModalClose = document.getElementById('imageModalClose');
+const demoContactModal = document.getElementById('demoContactModal');
+const demoContactClose = document.getElementById('demoContactClose');
 
 const closeImageModal = () => {
   if (!imageModal || !imageModalImg) return;
@@ -352,6 +397,16 @@ const closeImageModal = () => {
   imageModal.setAttribute('aria-hidden', 'true');
   imageModalImg.src = '';
   imageModalImg.alt = '';
+};
+
+const openDemoContactModal = () => {
+  demoContactModal?.classList.add('show');
+  demoContactModal?.setAttribute('aria-hidden', 'false');
+};
+
+const closeDemoContactModal = () => {
+  demoContactModal?.classList.remove('show');
+  demoContactModal?.setAttribute('aria-hidden', 'true');
 };
 
 document.querySelectorAll('[data-zoomable]').forEach((image) => {
@@ -368,13 +423,19 @@ imageModalClose?.addEventListener('click', closeImageModal);
 imageModal?.addEventListener('click', (event) => {
   if (event.target === imageModal) closeImageModal();
 });
+demoContactClose?.addEventListener('click', closeDemoContactModal);
+demoContactModal?.addEventListener('click', (event) => {
+  if (event.target === demoContactModal) closeDemoContactModal();
+});
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closeImageModal();
+  if (event.key === 'Escape') {
+    closeImageModal();
+    closeDemoContactModal();
+  }
 });
 
 const emptyMessage = 'Information will be updated soon.';
-const loadingMessage = 'Loading information...';
 const scheduleTabs = document.getElementById('scheduleTabs');
 const scheduleContent = document.getElementById('scheduleContent');
 const menuTabs = document.getElementById('menuTabs');
@@ -382,10 +443,11 @@ const menuContent = document.getElementById('menuContent');
 const announcementsList = document.getElementById('announcementsList');
 const announcementsUpdated = document.getElementById('announcementsUpdated');
 const announcementBadge = document.getElementById('announcementBadge');
-const preachingList = document.getElementById('preachingList');
-const preachingSearch = document.getElementById('preachingSearch');
-const preachingSuggestions = document.getElementById('preachingSuggestions');
-const uploadPhotosButton = document.getElementById('uploadPhotosButton');
+const attendeeList = document.getElementById('attendeeList');
+const attendeeSearch = document.getElementById('attendeeSearch');
+const attendeeSuggestions = document.getElementById('attendeeSuggestions');
+const clearAttendeeSearch = document.getElementById('clearAttendeeSearch');
+const transportationContent = document.getElementById('transportationContent');
 
 const escapeHtml = (value = '') => String(value)
   .replace(/&/g, '&amp;')
@@ -395,9 +457,7 @@ const escapeHtml = (value = '') => String(value)
   .replace(/'/g, '&#039;');
 
 const getDatedItems = (data) => Array.isArray(data?.dates) ? data.dates : [];
-
 const renderEmptyMessage = () => `<div class="info-box">${emptyMessage}</div>`;
-const renderLoadingMessage = () => `<div class="info-box">${loadingMessage}</div>`;
 
 const renderDatedContent = (items, renderer) => {
   if (!Array.isArray(items) || !items.length) return renderEmptyMessage();
@@ -433,10 +493,6 @@ const renderDatedSection = ({ tabsEl, contentEl, data, renderer }) => {
   }
 
   const buttons = [...tabsEl.querySelectorAll('.pill[data-date]')];
-  buttons.forEach((button) => {
-    button.dataset.dateBound = 'true';
-  });
-
   const activeButton = buttons.find((button) => button.classList.contains('active')) || buttons[0];
   setActiveDatedContent({
     tabsEl,
@@ -451,20 +507,18 @@ const renderScheduleItem = (item) => `
   <div class="time-row"><span>${escapeHtml(item.time)}</span><span>${escapeHtml(item.title)}</span></div>
 `;
 
-const renderMenuItem = (item) => `
+const renderMealItem = (item) => `
   <div class="time-row"><span>${escapeHtml(item.meal)}</span><span>${escapeHtml(item.description)}</span></div>
 `;
 
-const isActiveRow = (value) => String(value).trim().toLowerCase() === 'true';
-
-const parseSheetDate = (value) => {
+const parseDemoDate = (value) => {
   if (!value) return null;
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? null : date;
 };
 
-const formatSheetDateTime = (value) => {
-  const date = parseSheetDate(value);
+const formatDemoDateTime = (value) => {
+  const date = parseDemoDate(value);
   if (!date) return value || '';
   return date.toLocaleString('en-US', {
     month: 'short',
@@ -474,45 +528,16 @@ const formatSheetDateTime = (value) => {
   });
 };
 
-const normalizeName = (value) => String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+const isActiveRow = (value) => String(value).trim().toLowerCase() === 'true';
 
-const nameMatchesQuery = (name, query) => {
-  const normalizedName = normalizeName(name);
-  const normalizedQuery = normalizeName(query);
-  if (!normalizedName || !normalizedQuery) return false;
-  return normalizedName.startsWith(normalizedQuery)
-    || normalizedQuery.split(' ').every((part) => normalizedName.includes(part));
-};
-
-const getPreachingMembers = (team) => [team.Member1, team.Member2, team.Member3].filter(Boolean);
-
-const getPreachingLocations = (team) => [team.Location1, team.Location2].filter(Boolean);
-
-const getPreachingSearchRows = (teams) => teams.flatMap((team) => [
-  { name: team.Driver, team },
-  { name: team.Member1, team },
-  { name: team.Member2, team },
-  { name: team.Member3, team }
-].filter((entry) => entry.name));
-
-const renderAnnouncementsUpdated = (timestamp, isCached = false) => {
-  if (!announcementsUpdated) return;
-  if (!timestamp) {
-    announcementsUpdated.textContent = '';
-    return;
-  }
-  const label = isCached ? 'Showing saved info from' : 'Latest info checked';
-  announcementsUpdated.textContent = `${label} ${formatSheetDateTime(timestamp)}`;
-};
-
-const renderAnnouncements = (rows = [], meta = {}) => {
+const renderAnnouncements = (rows = []) => {
   if (!announcementsList) return;
-  renderAnnouncementsUpdated(meta.updatedAt, meta.isCached);
+  if (announcementsUpdated) announcementsUpdated.textContent = 'Showing fictional public demo data';
 
   const now = new Date();
   const announcements = rows.filter((item) => isActiveRow(item.Active));
   const hasNewAnnouncement = announcements.some((item) => {
-    const expiresAt = parseSheetDate(item.NewExpiresAt);
+    const expiresAt = parseDemoDate(item.NewExpiresAt);
     return expiresAt && now < expiresAt;
   });
   if (announcementBadge) announcementBadge.hidden = !hasNewAnnouncement;
@@ -523,11 +548,11 @@ const renderAnnouncements = (rows = [], meta = {}) => {
   }
 
   announcementsList.innerHTML = announcements.map((item) => {
-    const expiresAt = parseSheetDate(item.NewExpiresAt);
+    const expiresAt = parseDemoDate(item.NewExpiresAt);
     const isNew = expiresAt && now < expiresAt;
     return `
     <div class="announcement-card">
-      <div class="announcement-meta">Posted/updated ${escapeHtml(formatSheetDateTime(item.PostedDateTime))}</div>
+      <div class="announcement-meta">Posted/updated ${escapeHtml(formatDemoDateTime(item.PostedDateTime))}</div>
       <div class="announcement-message">
         ${isNew ? '<span class="new-badge announcement-inline-badge">NEW</span>' : ''}
         <span>${escapeHtml(item.Announcement || '')}</span>
@@ -537,76 +562,71 @@ const renderAnnouncements = (rows = [], meta = {}) => {
   }).join('');
 };
 
-const renderPreachingCard = (team) => {
-  const members = getPreachingMembers(team);
-  const locations = getPreachingLocations(team);
-  return `
-    <div class="preaching-card">
-      <strong>${escapeHtml(team.TeamName || 'Event Team')}</strong>
-      <div class="preaching-detail"><span>Driver</span><div>${escapeHtml(team.Driver || 'TBD')}</div></div>
-      <div class="preaching-detail"><span>Members</span><div>${members.length ? members.map(escapeHtml).join(', ') : 'TBD'}</div></div>
-      <div class="preaching-detail"><span>Car</span><div>${escapeHtml(team.Car || 'TBD')}</div></div>
-      <div class="preaching-detail"><span>Locations</span><div>${locations.length ? locations.map(escapeHtml).join('<br>') : 'TBD'}</div></div>
-    </div>
-  `;
+const normalizeName = (value) => String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+
+const nameMatchesQuery = (name, query) => {
+  const normalizedName = normalizeName(name);
+  const normalizedQuery = normalizeName(query);
+  if (!normalizedName || !normalizedQuery) return false;
+  return normalizedName.includes(normalizedQuery)
+    || normalizedQuery.split(' ').every((part) => normalizedName.includes(part));
 };
 
-const renderPreachingResults = (teams = []) => {
-  if (!preachingList) return;
-  preachingList.innerHTML = teams.length ? teams.map(renderPreachingCard).join('') : '';
+const renderAttendeeCard = (attendee) => `
+  <div class="attendee-card">
+    <strong>${escapeHtml(attendee.name)}</strong>
+    <div class="attendee-detail"><span>Role</span><div>${escapeHtml(attendee.role)}</div></div>
+    <div class="attendee-detail"><span>Group</span><div>${escapeHtml(attendee.group)}</div></div>
+    <div class="attendee-detail"><span>Assigned room</span><div>${escapeHtml(attendee.room)}</div></div>
+    <div class="attendee-detail"><span>Schedule track</span><div>${escapeHtml(attendee.track)}</div></div>
+  </div>
+`;
+
+const findAttendees = (query) => {
+  const searchText = normalizeName(query);
+  if (!searchText) return [];
+  return demoData.attendees.filter((attendee) => nameMatchesQuery(attendee.name, searchText));
 };
 
-const renderPreachingSuggestions = (query) => {
-  if (!preachingSuggestions) return;
+const renderAttendeeResults = (query) => {
+  if (!attendeeList) return;
+  const searchText = normalizeName(query);
 
-  const searchText = query.trim().toLowerCase();
-  const matches = getPreachingSearchRows(preachingTeamsCache)
-    .filter((entry) => nameMatchesQuery(entry.name, searchText))
-    .filter((entry, index, rows) => rows.findIndex((item) => item.name === entry.name
-      && item.team.TeamName === entry.team.TeamName) === index)
-    .slice(0, 20);
+  if (!searchText) {
+    attendeeList.innerHTML = '<div class="info-box">Enter an attendee name to view sample assignment details.</div>';
+    return;
+  }
+
+  const matches = findAttendees(searchText);
+  attendeeList.innerHTML = matches.length
+    ? matches.map(renderAttendeeCard).join('')
+    : '<div class="info-box">No attendee found. Try Maya Thompson, Daniel Kim, or Olivia Martinez.</div>';
+};
+
+const renderAttendeeSuggestions = (query) => {
+  if (!attendeeSuggestions) return;
+  const searchText = normalizeName(query);
+  const matches = findAttendees(searchText).slice(0, 6);
 
   if (!searchText || !matches.length) {
-    preachingSuggestions.hidden = true;
-    preachingSuggestions.innerHTML = '';
+    attendeeSuggestions.hidden = true;
+    attendeeSuggestions.innerHTML = '';
     return;
   }
 
-  preachingSuggestions.innerHTML = matches.map((entry) => `
-    <button class="autocomplete-option" type="button" data-name="${escapeHtml(entry.name)}" data-team="${escapeHtml(entry.team.TeamName || '')}">
-      <span>${escapeHtml(entry.name)}</span>
-      <small>${escapeHtml(entry.team.TeamName || 'Team')}</small>
+  attendeeSuggestions.innerHTML = matches.map((attendee) => `
+    <button class="autocomplete-option" type="button" data-name="${escapeHtml(attendee.name)}">
+      <span>${escapeHtml(attendee.name)}</span>
+      <small>${escapeHtml(attendee.group)}</small>
     </button>
   `).join('');
-  preachingSuggestions.hidden = false;
+  attendeeSuggestions.hidden = false;
 };
 
-const findPreachingTeams = (name, teamName = '') => {
-  const searchText = normalizeName(name);
-  if (!searchText) return [];
-  return preachingTeamsCache.filter((team) => (!teamName || team.TeamName === teamName)
-    && [team.Driver, team.Member1, team.Member2, team.Member3]
-    .some((person) => nameMatchesQuery(person, searchText)));
-};
-
-const selectPreachingName = (name, teamName = '') => {
-  if (preachingSearch) preachingSearch.value = name;
-  if (preachingSuggestions) preachingSuggestions.hidden = true;
-  const teams = findPreachingTeams(name, teamName);
-  if (!teams.length && preachingList) {
-    preachingList.innerHTML = '<div class="info-box">No active event team found for that name.</div>';
-    return;
-  }
-  renderPreachingResults(teams);
-};
-
-const renderPreachingSearch = (rows = []) => {
-  preachingTeamsCache = rows.filter((item) => isActiveRow(item.Active));
-  if (!preachingTeamsCache.length) {
-    if (preachingList) preachingList.innerHTML = '<div class="info-box">No active event teams at this time.</div>';
-    return;
-  }
-  renderPreachingResults(findPreachingTeams(preachingSearch?.value || ''));
+const selectAttendeeName = (name) => {
+  if (attendeeSearch) attendeeSearch.value = name;
+  if (attendeeSuggestions) attendeeSuggestions.hidden = true;
+  renderAttendeeResults(name);
 };
 
 const selectDateButton = (button) => {
@@ -618,15 +638,10 @@ const selectDateButton = (button) => {
       item.classList.toggle('active', item === button);
     });
 
-    if (!scheduleDataLoaded) {
-      scheduleContent.innerHTML = renderLoadingMessage();
-      return;
-    }
-
     setActiveDatedContent({
       tabsEl: scheduleTabs,
       contentEl: scheduleContent,
-      data: scheduleDataCache,
+      data: demoData.schedule,
       renderer: renderScheduleItem,
       activeDate: button.dataset.date
     });
@@ -637,16 +652,11 @@ const selectDateButton = (button) => {
       item.classList.toggle('active', item === button);
     });
 
-    if (!menuDataLoaded) {
-      menuContent.innerHTML = renderLoadingMessage();
-      return;
-    }
-
     setActiveDatedContent({
       tabsEl: menuTabs,
       contentEl: menuContent,
-      data: menuDataCache,
-      renderer: renderMenuItem,
+      data: demoData.meals,
+      renderer: renderMealItem,
       activeDate: button.dataset.date
     });
   }
@@ -658,6 +668,21 @@ document.addEventListener('click', (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
     toggleHelpBox();
+    return;
+  }
+
+  const demoContactButton = event.target.closest('[data-demo-contact]');
+  if (demoContactButton) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    openDemoContactModal();
+    return;
+  }
+
+  const sampleButton = event.target.closest('[data-sample-attendee]');
+  if (sampleButton) {
+    event.preventDefault();
+    selectAttendeeName(sampleButton.dataset.sampleAttendee || '');
     return;
   }
 
@@ -696,157 +721,40 @@ document.addEventListener('click', (event) => {
   }
 }, true);
 
-preachingSearch?.addEventListener('input', (event) => {
-  if (!event.target.value.trim()) {
-    renderPreachingResults([]);
-  }
-  renderPreachingSuggestions(event.target.value);
+attendeeSearch?.addEventListener('input', (event) => {
+  renderAttendeeResults(event.target.value);
+  renderAttendeeSuggestions(event.target.value);
 });
 
-preachingSearch?.addEventListener('keydown', (event) => {
+attendeeSearch?.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     event.preventDefault();
-    selectPreachingName(preachingSearch.value);
+    renderAttendeeResults(attendeeSearch.value);
+    if (attendeeSuggestions) attendeeSuggestions.hidden = true;
   }
 });
 
-preachingSuggestions?.addEventListener('click', (event) => {
+attendeeSuggestions?.addEventListener('click', (event) => {
   const option = event.target.closest('.autocomplete-option');
   if (!option) return;
   event.preventDefault();
-  selectPreachingName(option.dataset.name || '', option.dataset.team || '');
+  selectAttendeeName(option.dataset.name || '');
+});
+
+clearAttendeeSearch?.addEventListener('click', () => {
+  if (attendeeSearch) attendeeSearch.value = '';
+  if (attendeeSuggestions) {
+    attendeeSuggestions.hidden = true;
+    attendeeSuggestions.innerHTML = '';
+  }
+  renderAttendeeResults('');
 });
 
 document.addEventListener('click', (event) => {
-  if (!event.target.closest('.search-box') && preachingSuggestions) {
-    preachingSuggestions.hidden = true;
+  if (!event.target.closest('.search-box') && attendeeSuggestions) {
+    attendeeSuggestions.hidden = true;
   }
 });
-
-const dataVersion = '20260606-sheet-cache';
-const GOOGLE_SHEET_WEB_APP_URL = '';
-const SHEET_CACHE_KEY = 'prophetSchoolSheetData';
-
-const loadJson = async (url) => {
-  const response = await fetch(`${url}?v=${dataVersion}`, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Could not load ${url}`);
-  return response.json();
-};
-
-const readSheetCache = () => {
-  try {
-    const cached = JSON.parse(storage.get(SHEET_CACHE_KEY) || 'null');
-    if (!cached || !Array.isArray(cached.announcements) || !Array.isArray(cached.preaching)) return null;
-    return cached;
-  } catch (error) {
-    return null;
-  }
-};
-
-const writeSheetCache = (data) => {
-  storage.set(SHEET_CACHE_KEY, JSON.stringify({
-    announcements: Array.isArray(data.announcements) ? data.announcements : [],
-    preaching: Array.isArray(data.preaching) ? data.preaching : [],
-    fetchedAt: new Date().toISOString()
-  }));
-};
-
-const renderSheetData = (data, meta = {}) => {
-  renderAnnouncements(Array.isArray(data.announcements) ? data.announcements : [], meta);
-  renderPreachingSearch(Array.isArray(data.preaching) ? data.preaching : []);
-};
-
-const loadSheetData = async () => {
-  const cached = readSheetCache();
-  if (cached) {
-    renderSheetData(cached, { updatedAt: cached.fetchedAt, isCached: true });
-  }
-
-  if (!GOOGLE_SHEET_WEB_APP_URL) {
-    if (!cached) renderSheetData(demoSheetData, { updatedAt: new Date().toISOString(), isCached: false });
-    return;
-  }
-
-  try {
-    const separator = GOOGLE_SHEET_WEB_APP_URL.includes('?') ? '&' : '?';
-    const response = await fetch(`${GOOGLE_SHEET_WEB_APP_URL}${separator}v=${dataVersion}`, { cache: 'no-store' });
-    if (!response.ok) throw new Error('Google Sheet data could not load');
-    const data = await response.json();
-    writeSheetCache(data);
-    const fresh = readSheetCache();
-    renderSheetData(fresh || data, { updatedAt: fresh?.fetchedAt || new Date().toISOString(), isCached: false });
-  } catch (error) {
-    console.error(error);
-    if (!cached) {
-      renderAnnouncements([]);
-      if (preachingList) {
-        preachingList.innerHTML = '<div class="info-box">Google Sheet data could not load. Please check the Apps Script URL and deployment settings.</div>';
-      }
-    }
-  }
-};
-
-const loadEventData = async () => {
-  loadSheetData();
-
-  renderDatedSection({
-    tabsEl: scheduleTabs,
-    contentEl: scheduleContent,
-    data: scheduleDataCache,
-    renderer: renderScheduleItem
-  });
-
-  renderDatedSection({
-    tabsEl: menuTabs,
-    contentEl: menuContent,
-    data: menuDataCache,
-    renderer: renderMenuItem
-  });
-
-  try {
-    const scheduleData = await loadJson('data/schedule.json');
-    scheduleDataCache = scheduleData;
-    scheduleDataLoaded = true;
-    renderDatedSection({
-      tabsEl: scheduleTabs,
-      contentEl: scheduleContent,
-      data: scheduleData,
-      renderer: renderScheduleItem
-    });
-  } catch (error) {
-    console.error(error);
-    scheduleDataLoaded = true;
-    scheduleDataCache = fallbackScheduleData;
-    renderDatedSection({
-      tabsEl: scheduleTabs,
-      contentEl: scheduleContent,
-      data: scheduleDataCache,
-      renderer: renderScheduleItem
-    });
-  }
-
-  try {
-    const menuData = await loadJson('data/menu.json');
-    menuDataCache = menuData;
-    menuDataLoaded = true;
-    renderDatedSection({
-      tabsEl: menuTabs,
-      contentEl: menuContent,
-      data: menuData,
-      renderer: renderMenuItem
-    });
-  } catch (error) {
-    console.error(error);
-    menuDataLoaded = true;
-    menuDataCache = fallbackMenuData;
-    renderDatedSection({
-      tabsEl: menuTabs,
-      contentEl: menuContent,
-      data: menuDataCache,
-      renderer: renderMenuItem
-    });
-  }
-};
 
 const weatherList = document.getElementById('weatherList');
 const weatherRange = document.getElementById('weatherRange');
@@ -861,70 +769,73 @@ const formatForecastDate = (dateText) => {
   });
 };
 
-const weatherDescription = (code) => {
-  if ([0, 1].includes(code)) return 'Clear';
-  if ([2, 3].includes(code)) return 'Cloudy';
-  if ([45, 48].includes(code)) return 'Fog';
-  if ([51, 53, 55, 56, 57].includes(code)) return 'Drizzle';
-  if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return 'Rain';
-  if ([71, 73, 75, 77, 85, 86].includes(code)) return 'Snow';
-  if ([95, 96, 99].includes(code)) return 'Thunderstorm';
-  return 'Forecast';
-};
-
 const renderWeather = (days) => {
   if (!weatherList || !weatherRange) return;
-
-  if (!days.length) {
-    weatherList.innerHTML = '<div class="info-box">June 7 - June 11 is not available in the forecast yet. This section will update automatically when those dates are within range.</div>';
-    return;
-  }
 
   weatherRange.textContent = `${formatForecastDate(days[0].date)} - ${formatForecastDate(days[days.length - 1].date)}, Demo City, Demo State`;
   weatherList.innerHTML = days.map((day) => `
     <div class="weather-row">
       <strong>${formatForecastDate(day.date)}</strong>
       <span class="weather-temp">${Math.round(day.high)}°F / ${Math.round(day.low)}°F</span>
-      <span class="weather-meta">${weatherDescription(day.code)} · ${Math.round(day.precip)}% rain</span>
+      <span class="weather-meta">${escapeHtml(day.condition)} · ${Math.round(day.precip)}% rain</span>
     </div>
   `).join('');
 
-  if (weatherUpdated) {
-    weatherUpdated.textContent = `Updated ${new Date().toLocaleString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: '2-digit'
-    })}`;
-  }
+  if (weatherUpdated) weatherUpdated.textContent = 'Sample forecast for public demo';
 };
 
-const loadWeather = async () => {
-  if (!weatherList) return;
-
-  const targetStart = '2026-06-07';
-  const targetEnd = '2026-06-11';
-  const url = 'https://api.open-meteo.com/v1/forecast?latitude=39.5000&longitude=-98.3500&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=America%2FNew_York&forecast_days=16';
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Weather request failed');
-
-    const data = await response.json();
-    const daily = data.daily || {};
-    const days = (daily.time || []).map((date, index) => ({
-      date,
-      high: daily.temperature_2m_max[index],
-      low: daily.temperature_2m_min[index],
-      precip: daily.precipitation_probability_max[index] ?? 0,
-      code: daily.weather_code[index]
-    })).filter((day) => day.date >= targetStart && day.date <= targetEnd);
-
-    renderWeather(days);
-  } catch (error) {
-    weatherList.innerHTML = '<div class="info-box">Weather could not load right now. Please check again later.</div>';
-  }
+const renderTransportation = () => {
+  if (!transportationContent) return;
+  transportationContent.innerHTML = demoData.transportation.map(renderScheduleItem).join('');
 };
 
-loadEventData();
-loadWeather();
+const feedbackForm = document.getElementById('feedbackForm');
+const feedbackMessage = document.getElementById('feedbackMessage');
+const resetFeedbackForm = document.getElementById('resetFeedbackForm');
+const FEEDBACK_STORAGE_KEY = 'eventPortalDemoFeedback';
+
+const saveFeedback = (entry) => {
+  const existing = JSON.parse(storage.get(FEEDBACK_STORAGE_KEY) || '[]');
+  existing.push(entry);
+  storage.set(FEEDBACK_STORAGE_KEY, JSON.stringify(existing));
+};
+
+feedbackForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  if (!feedbackForm.reportValidity()) return;
+
+  saveFeedback({
+    name: document.getElementById('feedbackName')?.value.trim() || '',
+    experience: document.getElementById('feedbackExperience')?.value || '',
+    section: document.getElementById('feedbackSection')?.value || '',
+    comments: document.getElementById('feedbackComments')?.value.trim() || '',
+    submittedAt: new Date().toISOString()
+  });
+
+  if (feedbackMessage) {
+    feedbackMessage.textContent = 'Thank you. Your demo feedback was submitted successfully.';
+  }
+});
+
+resetFeedbackForm?.addEventListener('click', () => {
+  feedbackForm?.reset();
+  if (feedbackMessage) feedbackMessage.textContent = '';
+});
+
+renderAnnouncements(demoData.announcements);
+renderDatedSection({
+  tabsEl: scheduleTabs,
+  contentEl: scheduleContent,
+  data: demoData.schedule,
+  renderer: renderScheduleItem
+});
+renderDatedSection({
+  tabsEl: menuTabs,
+  contentEl: menuContent,
+  data: demoData.meals,
+  renderer: renderMealItem
+});
+renderAttendeeResults('');
+renderTransportation();
+renderWeather(demoData.weather);

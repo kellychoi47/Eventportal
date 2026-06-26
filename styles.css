@@ -207,6 +207,7 @@ body.is-unlocked .access-screen {
   }
 }
 .phone-shell {
+  width: min(100%, 430px);
   max-width: 430px;
   margin: 0 auto;
 }
@@ -707,12 +708,13 @@ body.is-unlocked .access-screen {
   color: var(--theme);
 }
 .announcement-list,
-.preaching-list {
+.attendee-list,
+.transport-list {
   display: grid;
   gap: 8px;
 }
 .announcement-card,
-.preaching-card {
+.attendee-card {
   display: grid;
   gap: 6px;
   border: 1px solid var(--theme-line);
@@ -722,12 +724,12 @@ body.is-unlocked .access-screen {
   box-shadow: 0 4px 12px rgba(47, 34, 104, 0.04);
 }
 .announcement-card strong,
-.preaching-card strong {
+.attendee-card strong {
   color: var(--theme);
   font-size: 0.96rem;
 }
 .announcement-meta,
-.preaching-meta {
+.attendee-meta {
   color: var(--muted);
   font-size: 0.78rem;
 }
@@ -804,13 +806,13 @@ body.is-unlocked .access-screen {
   color: var(--muted);
   font-size: 0.74rem;
 }
-.preaching-detail {
+.attendee-detail {
   display: grid;
-  grid-template-columns: 72px 1fr;
+  grid-template-columns: 96px 1fr;
   gap: 8px;
   font-size: 0.9rem;
 }
-.preaching-detail span:first-child {
+.attendee-detail span:first-child {
   font-weight: 800;
   color: var(--theme);
 }
@@ -856,10 +858,96 @@ body.is-unlocked .access-screen {
   margin-bottom: 12px;
   font-weight: 800;
 }
+.demo-label {
+  display: inline-flex;
+  margin: 0 0 8px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.sample-name,
+.text-action {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 900;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+.text-action {
+  justify-self: start;
+  text-align: left;
+}
+.clear-search-button,
+.secondary-button {
+  min-height: 40px;
+  border: 1px solid var(--theme-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--theme);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 900;
+  cursor: pointer;
+  padding: 9px 13px;
+}
+.clear-search-button {
+  margin: 0 0 10px;
+}
+.feedback-form {
+  display: grid;
+  gap: 12px;
+}
+.feedback-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+.feedback-form label span {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+.feedback-form input,
+.feedback-form select,
+.feedback-form textarea {
+  width: 100%;
+  border: 1px solid var(--theme-line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 10px 11px;
+}
+.feedback-form textarea {
+  resize: vertical;
+}
+.feedback-actions {
+  display: grid;
+  gap: 9px;
+}
+.feedback-message {
+  min-height: 18px;
+  margin: 0;
+  color: var(--theme);
+  font-size: 0.86rem;
+  font-weight: 900;
+}
 .big-button {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 0;
   text-decoration: none;
   background: var(--accent);
   color: #fff;
@@ -918,6 +1006,7 @@ body.is-unlocked .access-screen {
   font-size: 0.78rem;
   font-weight: 800;
   white-space: nowrap;
+  flex: 0 1 auto;
   transition:
     background 0.18s ease,
     transform 0.18s ease;
@@ -934,7 +1023,9 @@ body.is-unlocked .access-screen {
   background: #f8f0ec;
 }
 .issue-report-link {
+  width: 100%;
   min-height: 46px;
+  border: 0;
   border-top: 1px var(--line);
   display: flex;
   align-items: center;
@@ -946,6 +1037,8 @@ body.is-unlocked .access-screen {
   text-decoration: none;
   font-weight: 900;
   font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
 }
 .issue-report-link:active {
   transform: scale(0.992);
@@ -979,7 +1072,8 @@ body.is-unlocked .access-screen {
   font-size: 0.9rem;
   background: #fff;
 }
-.help-row a {
+.help-row a,
+.help-row button {
   color: var(--accent);
   font-weight: 800;
   text-decoration: none;
@@ -998,6 +1092,9 @@ body.is-unlocked .access-screen {
   align-items: center;
   justify-content: center;
   gap: 4px;
+  flex-wrap: wrap;
+  padding: 0 8px;
+  overflow-wrap: anywhere;
 }
 .site-footer .ui-icon {
   width: 10px;
@@ -1044,6 +1141,47 @@ body.is-unlocked .access-screen {
   transition:
     opacity 0.18s ease,
     visibility 0s;
+}
+.demo-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(25, 18, 14, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.18s ease,
+    visibility 0s linear 0.18s;
+}
+.demo-modal.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.18s ease,
+    visibility 0s;
+}
+.demo-modal-card {
+  width: min(100%, 360px);
+  border: 1px solid var(--theme-line);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 45px rgba(47, 34, 104, 0.18);
+  padding: 20px;
+}
+.demo-modal-card h2 {
+  margin: 0 0 8px;
+  color: var(--theme);
+  font-size: 1.2rem;
+}
+.demo-modal-card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.45;
 }
 .image-modal img {
   max-width: 100%;
@@ -1116,6 +1254,16 @@ body.is-unlocked .access-screen {
   }
   .help-card-button .small {
     white-space: normal;
+  }
+}
+@media (max-width: 430px) {
+  .help-card-button .small {
+    max-width: 120px;
+  }
+  .contact-pill {
+    gap: 3px;
+    padding: 0 8px;
+    font-size: 0.72rem;
   }
 }
 @media (min-width: 520px) {
