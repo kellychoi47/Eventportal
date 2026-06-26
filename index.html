@@ -86,7 +86,6 @@
 
       <section class="hero">
         <div>
-          <p class="demo-label">Public Portfolio Demo</p>
           <h2>Information Center</h2>
           <p class="section-note">Sample Conference Guide</p>
         </div>
@@ -104,6 +103,45 @@
                 <div class="info-box">Loading announcements...</div>
               </div>
               <p class="update-note" id="announcementsUpdated"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion" data-accordion data-theme="prep">
+          <button class="accordion-header" data-toggle>
+            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></span><span class="label">Event Guide</span></div>
+            <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="sub-list">
+              <button class="sub-row" data-subtarget="weather"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M12 3v2"/><path d="M12 19v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="m4.9 19.1 1.4-1.4"/><path d="m17.7 6.3 1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg></span><span>Weather</span><span class="sub-chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+              <div class="sub-panel" id="weather">
+                <div class="content-card">
+                  <h3>Demo City Weather</h3>
+                  <p class="section-note" id="weatherRange">June 7 - June 11, Demo City, Demo State</p>
+                  <div class="weather-list" id="weatherList">
+                    <div class="info-box">Loading the latest available forecast...</div>
+                  </div>
+                  <p class="update-note" id="weatherUpdated"></p>
+                </div>
+              </div>
+
+              <button class="sub-row" data-subtarget="items-to-bring"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span><span>Items to Bring</span><span class="sub-chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+              <div class="sub-panel" id="items-to-bring">
+                <div class="content-card">
+                  <h3>Items to Bring</h3>
+                  <p class="section-note">Tap to zoom in</p>
+                   <img class="full-image zoomable-image" src="images/demo-card.svg" alt="Items to Bring" data-zoomable />
+                </div>
+              </div>
+
+              <button class="sub-row" data-subtarget="allergies-dietary"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M10 2h4"/><path d="M12 14v-4"/><path d="M12 22a8 8 0 0 0 7.7-10.2L14 2h-4l-5.7 9.8A8 8 0 0 0 12 22Z"/><path d="M12 18h.01"/></svg></span><span>Allergies / Diet</span><span class="sub-chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
+              <div class="sub-panel" id="allergies-dietary">
+                <div class="content-card">
+                  <h3>Allergies/Dietary Restrictions</h3>
+                  <div class="info-box">This public demo uses fictional meal notes only. No dietary information is collected or submitted.</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -149,45 +187,6 @@
                     <div>WiFi Name: Guest WiFi </div>
                     <div>Password: Guest WiFi</div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion" data-accordion data-theme="prep">
-          <button class="accordion-header" data-toggle>
-            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></span><span class="label">Event Guide</span></div>
-            <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
-          </button>
-          <div class="accordion-body">
-            <div class="sub-list">
-              <button class="sub-row" data-subtarget="weather"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M12 3v2"/><path d="M12 19v2"/><path d="m4.9 4.9 1.4 1.4"/><path d="m17.7 17.7 1.4 1.4"/><path d="M3 12h2"/><path d="M19 12h2"/><path d="m4.9 19.1 1.4-1.4"/><path d="m17.7 6.3 1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg></span><span>Weather</span><span class="sub-chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
-              <div class="sub-panel" id="weather">
-                <div class="content-card">
-                  <h3>Demo City Weather</h3>
-                  <p class="section-note" id="weatherRange">June 7 - June 11, Demo City, Demo State</p>
-                  <div class="weather-list" id="weatherList">
-                    <div class="info-box">Loading the latest available forecast...</div>
-                  </div>
-                  <p class="update-note" id="weatherUpdated"></p>
-                </div>
-              </div>
-
-              <button class="sub-row" data-subtarget="items-to-bring"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M6 2h9l3 3v17H6z"/><path d="M14 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg></span><span>Items to Bring</span><span class="sub-chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
-              <div class="sub-panel" id="items-to-bring">
-                <div class="content-card">
-                  <h3>Items to Bring</h3>
-                  <p class="section-note">Tap to zoom in</p>
-                   <img class="full-image zoomable-image" src="images/demo-card.svg" alt="Items to Bring" data-zoomable />
-                </div>
-              </div>
-
-              <button class="sub-row" data-subtarget="allergies-dietary"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M10 2h4"/><path d="M12 14v-4"/><path d="M12 22a8 8 0 0 0 7.7-10.2L14 2h-4l-5.7 9.8A8 8 0 0 0 12 22Z"/><path d="M12 18h.01"/></svg></span><span>Allergies / Diet</span><span class="sub-chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
-              <div class="sub-panel" id="allergies-dietary">
-                <div class="content-card">
-                  <h3>Allergies/Dietary Restrictions</h3>
-                  <div class="info-box">This public demo uses fictional meal notes only. No dietary information is collected or submitted.</div>
                 </div>
               </div>
             </div>
@@ -286,30 +285,6 @@
             <div class="content-card">
               <h3>Departure Transportation</h3>
               <div class="transport-list" id="transportationContent"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion" data-accordion data-theme="feedback">
-          <button class="accordion-header" data-toggle>
-            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg></span><span class="label">Feedback Form</span></div>
-            <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
-          </button>
-          <div class="accordion-body">
-            <div class="content-card">
-              <form class="feedback-form" id="feedbackForm">
-                <p class="section-note">This portfolio demo stores feedback only in this browser and does not send it to an external service.</p>
-                <label>Name <span>optional</span><input id="feedbackName" name="name" type="text" autocomplete="name" /></label>
-                <label>Overall experience <span>required</span><select id="feedbackExperience" name="experience" required><option value="">Select one</option><option>Excellent</option><option>Good</option><option>Okay</option><option>Needs improvement</option></select></label>
-                <label>Most helpful section <span>required</span><select id="feedbackSection" name="section" required><option value="">Select one</option><option>Announcements</option><option>Schedule</option><option>Event Guide</option><option>Team Search</option><option>Departure Transportation</option><option>Lodging</option><option>Meals</option></select></label>
-                <label>Comments <span>optional</span><textarea id="feedbackComments" name="comments" rows="4"></textarea></label>
-                <a class="big-button" href="https://docs.google.com/forms/u/0/" target="_blank" rel="noopener">Open Demo Google Form</a>
-                <div class="feedback-actions">
-                  <button class="big-button" type="submit">Submit Feedback</button>
-                  <button class="secondary-button" id="resetFeedbackForm" type="button">Reset Form</button>
-                </div>
-                <p class="feedback-message" id="feedbackMessage" role="status"></p>
-              </form>
             </div>
           </div>
         </div>
