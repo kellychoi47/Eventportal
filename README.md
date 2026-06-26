@@ -8,16 +8,16 @@ This repository contains only generic sample data and demo SVG assets. It does n
 
 - Mobile-first event guide layout
 - Accordion navigation
-- Schedule and menu tabs powered by JSON files
+- Schedule and meals tabs powered by fictional local data
 - Demo announcements
-- Demo team search with autocomplete
+- Attendee Search with fictional sample records and autocomplete
+- Local-only Feedback Form stored in this browser
 - Image preview modal
 - Generic lodging, maps, transportation, and flyer assets
 
 ## Editing Demo Data
 
-- Schedule: `data/schedule.json`
-- Menu: `data/menu.json`
-- Demo announcements and team search data: `script.js` and `preaching.js`
+- Schedule, meals, announcements, attendee search, transportation, and weather samples: `script.js`
+- Standalone attendee search demo: `attendee-search.html`, `attendee-search.css`, and `attendee-search.js`
 
 All content is intentionally fictional.

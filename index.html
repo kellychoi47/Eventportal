@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Event Information Portal Demo</title>
-  <meta name="description" content="Event Information Portal Demo guide with lodging, prep info, schedule, meals, transportation, and help contacts." />
+  <meta name="description" content="Event Information Portal Demo guide with lodging, event guide, schedule, meals, transportation, and help contacts." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Event Information Portal Demo" />
-  <meta property="og:description" content="Event Information Portal Demo guide for lodging, prep info, schedule, meals, transportation, and help contacts." />
+  <meta property="og:description" content="Event Information Portal Demo guide for lodging, event guide, schedule, meals, transportation, and help contacts." />
   <meta property="og:image" content="images/demo-icon.svg" />
   <meta property="og:image:type" content="image/svg+xml" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="1200" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Event Information Portal Demo" />
-  <meta name="twitter:description" content="Event guide for lodging, prep info, schedule, meals, transportation, and help contacts." />
+  <meta name="twitter:description" content="Event guide for lodging, event guide, schedule, meals, transportation, and help contacts." />
   <meta name="twitter:image" content="images/demo-icon.svg" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="images/demo-icon.svg" />
@@ -29,7 +29,7 @@
       </div>
       <p class="access-kicker">Event Information Portal Demo</p>
       <h1>Welcome</h1>
-      <p class="access-copy">Enter the 4-digit code to view the event guide.</p>
+      <p class="access-copy">Enter demo code 1234 to view the public portfolio demo.</p>
       <form class="access-form" id="accessForm">
         <label class="sr-only" for="passcodeInput">Passcode</label>
         <input id="passcodeInput" name="passcode" type="password" inputmode="numeric" autocomplete="off" maxlength="4" />
@@ -73,20 +73,21 @@
           <span class="contact-pill">Call / Contact <svg class="ui-icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
         </button>
         <div class="help-body" id="helpBody">
-          <div class="help-row"><span>General Information</span><span>Demo Coordinator Alex Morgan</span><a href="tel:5550101001">(555) 010-1001</a></div>
-          <div class="help-row"><span>Facilities Management</span><span>Facilities Lead Jordan Parker</span><a href="tel:5550101003">(555) 010-1003</a></div>
-          <div class="help-row"><span>Lodging</span><span>Lodging Lead Casey Rivera</span><a href="tel:5550101004">(555) 010-1004</a></div>
-          <a class="issue-report-link" href="https://example.com/demo-form" target="_blank" rel="noopener">
+          <div class="help-row"><span>General Information</span><span>Coordinator Alex Morgan</span><button class="text-action" type="button" data-demo-contact>Demo Contact</button></div>
+          <div class="help-row"><span>Facilities Management</span><span>Facilities Lead Jordan Parker</span><button class="text-action" type="button" data-demo-contact>Demo Contact</button></div>
+          <div class="help-row"><span>Lodging</span><span>Lodging Lead Casey Rivera</span><button class="text-action" type="button" data-demo-contact>Demo Contact</button></div>
+          <button class="issue-report-link" type="button" data-demo-contact>
             <span class="issue-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M9 18h6"/><path d="M7 10h10"/><rect x="6" y="6" width="12" height="14" rx="4"/><path d="M3 13h3"/><path d="M18 13h3"/><path d="M4 19l3-2"/><path d="M20 19l-3-2"/></svg></span>
             <span>Report Website Issue</span>
             <svg class="ui-icon issue-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-          </a>
+          </button>
         </div>
       </section>
 
       <section class="hero">
         <div>
           <h2>Information Center</h2>
+          <p class="section-note">Sample Conference Guide</p>
         </div>
       </section>
 
@@ -106,56 +107,9 @@
           </div>
         </div>
 
-        <div class="accordion" data-accordion data-theme="lodging">
-          <button class="accordion-header" data-toggle>
-            <div class="left">
-              <span class="circle-icon" aria-hidden="true">
-                <svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg>
-              </span>
-              <span class="label">Lodging</span>
-            </div>
-            <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
-          </button>
-          <div class="accordion-body">
-            <div class="sub-list">
-              <button class="sub-row active" data-subtarget="loganville"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 7v11"/><path d="M21 12v6"/><path d="M3 14h18"/><path d="M7 14V9h8a3 3 0 0 1 3 3v2"/><path d="M7 10h.01"/></svg></span><span>Demo City</span></button>
-              <div class="sub-panel show" id="loganville">
-                <div class="content-card">
-                  <h3>Demo City Room Assignment</h3>
-                  <p class="section-note">Tap to zoom in</p>
-                   <img class="full-image zoomable-image" src="images/demo-card.svg" alt="Arrival transportation information" data-zoomable />
-                </div>
-              </div>
-
-              <button class="sub-row" data-subtarget="blueprint"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/><path d="M8 6v12"/><path d="M16 6v12"/></svg></span><span>Venue Map</span></button>
-              <div class="sub-panel" id="blueprint">
-                <div class="content-card">
-                  <div class="pill-tabs">
-                    <button class="pill" type="button" data-map-button data-map-image="images/demo-map.svg" data-map-alt="Main Hall map" data-map-target="churchBlueprintImage">Main Hall</button>
-                    <button class="pill active" type="button" data-map-button data-map-image="images/demo-map.svg" data-map-alt="Workshop Center blueprint" data-map-target="churchBlueprintImage">Workshop Center</button>
-                  </div>
-                 <img class="full-image" id="churchBlueprintImage" src="images/demo-map.svg" alt="Workshop Center blueprint" />
-                </div>
-              </div>
-
-              <button class="sub-row" data-subtarget="wifi"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M12 20h.01"/></svg></span><span>WiFi</span></button>
-              <div class="sub-panel" id="wifi">
-                <div class="content-card">
-                  <h3>WiFi Information</h3>
-                  <div class="wifi-card">
-                    <strong>Main Network</strong>
-                    <div>WiFi Name: Demo Guest WiFi </div>
-                    <div>Password: DemoPass2026</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="accordion" data-accordion data-theme="prep">
           <button class="accordion-header" data-toggle>
-            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></span><span class="label">Prep Info</span></div>
+            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></span><span class="label">Event Guide</span></div>
             <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -185,7 +139,54 @@
               <div class="sub-panel" id="allergies-dietary">
                 <div class="content-card">
                   <h3>Allergies/Dietary Restrictions</h3>
-                  <a class="big-button" href="https://example.com/demo-form" target="_blank" rel="noopener">Submit Google Form</a>
+                  <div class="info-box">This public demo uses fictional meal notes only. No dietary information is collected or submitted.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion" data-accordion data-theme="lodging">
+          <button class="accordion-header" data-toggle>
+            <div class="left">
+              <span class="circle-icon" aria-hidden="true">
+                <svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-7h6v7"/></svg>
+              </span>
+              <span class="label">Lodging</span>
+            </div>
+            <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="accordion-body">
+            <div class="sub-list">
+              <button class="sub-row active" data-subtarget="loganville"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 7v11"/><path d="M21 12v6"/><path d="M3 14h18"/><path d="M7 14V9h8a3 3 0 0 1 3 3v2"/><path d="M7 10h.01"/></svg></span><span>Demo City</span></button>
+              <div class="sub-panel show" id="loganville">
+                <div class="content-card">
+                  <h3>Room Assignment</h3>
+                  <p class="section-note">Tap to zoom in</p>
+                   <img class="full-image zoomable-image" src="images/demo-card.svg" alt="Arrival transportation information" data-zoomable />
+                </div>
+              </div>
+
+              <button class="sub-row" data-subtarget="blueprint"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/><path d="M8 6v12"/><path d="M16 6v12"/></svg></span><span>Venue Map</span></button>
+              <div class="sub-panel" id="blueprint">
+                <div class="content-card">
+                  <div class="pill-tabs">
+                    <button class="pill" type="button" data-map-button data-map-image="images/demo-map.svg" data-map-alt="Main Hall map" data-map-target="venueBlueprintImage">Main Hall</button>
+                    <button class="pill active" type="button" data-map-button data-map-image="images/demo-map.svg" data-map-alt="Workshop Center blueprint" data-map-target="venueBlueprintImage">Workshop Center</button>
+                  </div>
+                 <img class="full-image" id="venueBlueprintImage" src="images/demo-map.svg" alt="Workshop Center blueprint" />
+                </div>
+              </div>
+
+              <button class="sub-row" data-subtarget="wifi"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M12 20h.01"/></svg></span><span>WiFi</span></button>
+              <div class="sub-panel" id="wifi">
+                <div class="content-card">
+                  <h3>WiFi Information</h3>
+                  <div class="wifi-card">
+                    <strong>Main Network</strong>
+                    <div>WiFi Name: Guest WiFi </div>
+                    <div>Password: Guest WiFi</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -240,13 +241,15 @@
           </button>
           <div class="accordion-body">
             <div class="content-card">
-              <h3>Event Teams</h3>
+              <h3>Team Search</h3>
+              <p class="section-note">Try searching: <button class="sample-name" type="button" data-sample-attendee="Alex Kim">Alex</button>, <button class="sample-name" type="button" data-sample-attendee="Jordan Lee">Jordan</button>, <button class="sample-name" type="button" data-sample-attendee="Taylor Smith">Taylor</button>, or <button class="sample-name" type="button" data-sample-attendee="Morgan Park">Morgan</button></p>
               <div class="search-box">
-                <input class="search-input" id="preachingSearch" type="search" autocomplete="off" placeholder="Search first and last name" />
-                <div class="autocomplete-list" id="preachingSuggestions" hidden></div>
+                <input class="search-input" id="attendeeSearch" type="search" autocomplete="off" placeholder="Search by team member name" />
+                <div class="autocomplete-list" id="attendeeSuggestions" hidden></div>
               </div>
-              <div class="preaching-list" id="preachingList" aria-live="polite">
-                <div class="info-box">Loading searching information...</div>
+              <button class="clear-search-button" id="clearAttendeeSearch" type="button">Clear Search</button>
+              <div class="attendee-list" id="attendeeList" aria-live="polite">
+                <div class="info-box">Enter a demo team member name to view sample assignment details.</div>
               </div>
             </div>
           </div>
@@ -254,7 +257,7 @@
           
         <div class="accordion" data-accordion data-theme="menu">
           <button class="accordion-header" data-toggle>
-            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.5 3a2.4 2.4 0 0 0 0 4.8"/><path d="M15.5 3a2.4 2.4 0 0 0 0 4.8"/></svg></span><span class="label">Menu</span></div>
+            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M7 21h10"/><path d="M12 21a9 9 0 0 0 9-9H3a9 9 0 0 0 9 9Z"/><path d="M11.5 3a2.4 2.4 0 0 0 0 4.8"/><path d="M15.5 3a2.4 2.4 0 0 0 0 4.8"/></svg></span><span class="label">Meals</span></div>
             <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -275,26 +278,13 @@
 
         <div class="accordion" data-accordion data-theme="transport">
           <button class="accordion-header" data-toggle>
-            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M14 17h1"/><path d="M19 17h3v-6l-3-4h-5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><span class="label">Transportation</span></div>
+            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M14 17h1"/><path d="M19 17h3v-6l-3-4h-5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><span class="label">Departure Transportation</span></div>
             <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="accordion-body">
             <div class="content-card">
-              <h3>Transportation</h3>
-              <div class="info-box">Information will be updated soon.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion" data-accordion data-theme="submission">
-          <button class="accordion-header" data-toggle>
-            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg></span><span class="label">Demo Submission</span></div>
-            <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
-          </button>
-          <div class="accordion-body">
-            <div class="content-card">
-              <div class="deadline">Deadline: Sunday 6/18 by 10:00 PM</div>
-              <a class="big-button" href="https://example.com/demo-form" target="_blank" rel="noopener">Open Demo Submission Form</a>
+              <h3>Departure Transportation</h3>
+              <div class="transport-list" id="transportationContent"></div>
             </div>
           </div>
         </div>
@@ -302,9 +292,9 @@
       </section>
 
       <footer class="site-footer">
-        <p><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> This site is for registered attendees only.</p>
+        <p><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> This demonstration uses fictional sample data and is not connected to the original event database.</p>
         <button class="logout-button" type="button" id="logoutButton">Log out</button>
-        <div>© Event Demo Event Information Portal Demo</div>
+        <div>© Event Demo Event Information Portal</div>
       </footer>
     </main>
   </div>
@@ -313,6 +303,14 @@
     <button class="image-modal-close" type="button" id="imageModalClose" aria-label="Close image preview">×</button>
     <img id="imageModalImg" src="" alt="" />
 
+  </div>
+
+  <div class="demo-modal" id="demoContactModal" aria-hidden="true">
+    <div class="demo-modal-card" role="dialog" aria-modal="true" aria-labelledby="demoContactTitle">
+      <h2 id="demoContactTitle">Demo Contact</h2>
+      <p>This is a demonstration contact feature. No real call or message will be sent.</p>
+      <button class="big-button" id="demoContactClose" type="button">Close</button>
+    </div>
   </div>
 
   <script src="script.js?v=20260610-name-search"></script>
