@@ -74,7 +74,6 @@
         </button>
         <div class="help-body" id="helpBody">
           <div class="help-row"><span>General Information</span><span>Demo Coordinator Alex Morgan</span><a href="tel:5550101001">(555) 010-1001</a></div>
-           <div class="help-row"><span>General Information</span><span>Event Lead Taylor Brooks</span><a href="tel:5550101002">(555) 010-1002</a></div>
           <div class="help-row"><span>Facilities Management</span><span>Facilities Lead Jordan Parker</span><a href="tel:5550101003">(555) 010-1003</a></div>
           <div class="help-row"><span>Lodging</span><span>Lodging Lead Casey Rivera</span><a href="tel:5550101004">(555) 010-1004</a></div>
           <a class="issue-report-link" href="https://example.com/demo-form" target="_blank" rel="noopener">
@@ -92,7 +91,7 @@
       </section>
 
       <section class="accordion-group">
-        <div class="accordion open" data-accordion data-theme="announcements">
+        <div class="accordion" data-accordion data-theme="announcements">
           <button class="accordion-header" data-toggle>
             <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6.5"/><path d="M8 7h8"/><path d="M8 11h6"/><path d="M15 18h6"/><path d="M18 15v6"/></svg></span><span class="label">Announcements</span><span class="new-badge" id="announcementBadge" hidden>NEW</span></div>
             <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
@@ -154,7 +153,7 @@
           </div>
         </div>
 
-        <!-- <div class="accordion" data-accordion data-theme="prep">
+        <div class="accordion" data-accordion data-theme="prep">
           <button class="accordion-header" data-toggle>
             <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></span><span class="label">Prep Info</span></div>
             <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
@@ -191,7 +190,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
         <div class="accordion" data-accordion data-theme="schedule">
           <button class="accordion-header" data-toggle>
@@ -229,24 +228,7 @@
                   <p class="section-note">Tap to zoom in</p>
                   <img class="full-image zoomable-image" id="classroomMapImage" src="images/demo-map.svg" alt="Class room map 1-2"  data-zoomable/>
                 </div>
-              </div>
-
-              <button class="sub-row" data-subtarget="seating-area"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 10V7a3 3 0 0 1 6 0v3"/><path d="M14 10V7a3 3 0 0 1 6 0v3"/><path d="M5 14h14"/><path d="M7 14v7"/><path d="M17 14v7"/></svg></span><span>Seating Area</span><span class="sub-chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
-              <div class="sub-panel" id="seating-area">
-                <div class="content-card">
-                  <p class="section-note">Tap to zoom in</p>
-                   <img class="full-image zoomable-image" src="images/demo-map.svg" alt="Cleaning area" data-zoomable />
-                </div>
-              </div>
-
-              <button class="sub-row" data-subtarget="cleaning-area"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21v-9l4-8h6l4 8v9"/><path d="M8 14h8"/><path d="M9 18h6"/></svg></span><span>Cleaning Area</span><span class="sub-chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
-              <div class="sub-panel" id="cleaning-area">
-                <div class="content-card">
-                  <h3>Cleaning Area</h3>
-                  <p class="section-note">Tap to zoom in</p>
-                   <img class="full-image zoomable-image" src="images/demo-map.svg" alt="Cleaning area" data-zoomable />
-                </div>
-              </div>
+              </div>              
             </div>
           </div>
         </div>
@@ -264,20 +246,8 @@
                 <div class="autocomplete-list" id="preachingSuggestions" hidden></div>
               </div>
               <div class="preaching-list" id="preachingList" aria-live="polite">
-                <div class="info-box">Loading preaching information...</div>
+                <div class="info-box">Loading searching information...</div>
               </div>
-            </div>
-            <div class="content-card">
-              <a class="big-button upload-photos-button" id="uploadPhotosButton" href="https://example.com/demo-form" target="_blank" rel="noopener">Upload Team Photos</a>
-            </div>
-            <div class="content-card">
-              <a class="big-button upload-photos-button" id="uploadPhotosButton" href="https://example.com/demo-form" target="_blank" rel="noopener">Contacts Follow up</a>
-            </div>
-            <div class="content-card">
-              <h3>Invitation Flyer</h3>
-              <p class="section-note">Download the flyer to share with contacts</p>
-              <img class="full-image" src="images/demo-flyer.svg" alt="Public event invitation flyer" />
-              <a class="big-button upload-photos-button" href="images/demo-flyer.svg" target="_blank" rel="noopener">Open Demo Flyer</a>
             </div>
           </div>
         </div>
@@ -305,12 +275,12 @@
 
         <div class="accordion" data-accordion data-theme="transport">
           <button class="accordion-header" data-toggle>
-            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M14 17h1"/><path d="M19 17h3v-6l-3-4h-5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><span class="label">Departure Transportation</span></div>
+            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M14 17h1"/><path d="M19 17h3v-6l-3-4h-5"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><span class="label">Transportation</span></div>
             <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="accordion-body">
             <div class="content-card">
-              <h3>Departure Transportation</h3>
+              <h3>Transportation</h3>
               <div class="info-box">Information will be updated soon.</div>
             </div>
           </div>
@@ -326,9 +296,6 @@
               <div class="deadline">Deadline: Sunday 6/18 by 10:00 PM</div>
               <a class="big-button" href="https://example.com/demo-form" target="_blank" rel="noopener">Open Demo Submission Form</a>
             </div>
-            <div class="content-card">
-              <a class="big-button" href="https://example.com/demo-form" target="_blank" rel="noopener">Event Information Portal Demo Feedback</a>
-           </div>
           </div>
         </div>
 
