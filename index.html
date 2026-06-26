@@ -73,7 +73,7 @@
           <span class="contact-pill">Call / Contact <svg class="ui-icon" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
         </button>
         <div class="help-body" id="helpBody">
-          <div class="help-row"><span>General Information</span><span>Demo Coordinator Alex Morgan</span><button class="text-action" type="button" data-demo-contact>Demo Contact</button></div>
+          <div class="help-row"><span>General Information</span><span>Coordinator Alex Morgan</span><button class="text-action" type="button" data-demo-contact>Demo Contact</button></div>
           <div class="help-row"><span>Facilities Management</span><span>Facilities Lead Jordan Parker</span><button class="text-action" type="button" data-demo-contact>Demo Contact</button></div>
           <div class="help-row"><span>Lodging</span><span>Lodging Lead Casey Rivera</span><button class="text-action" type="button" data-demo-contact>Demo Contact</button></div>
           <button class="issue-report-link" type="button" data-demo-contact>
@@ -123,7 +123,7 @@
               <button class="sub-row active" data-subtarget="loganville"><span class="mini-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M3 7v11"/><path d="M21 12v6"/><path d="M3 14h18"/><path d="M7 14V9h8a3 3 0 0 1 3 3v2"/><path d="M7 10h.01"/></svg></span><span>Demo City</span></button>
               <div class="sub-panel show" id="loganville">
                 <div class="content-card">
-                  <h3>Demo City Room Assignment</h3>
+                  <h3>Room Assignment</h3>
                   <p class="section-note">Tap to zoom in</p>
                    <img class="full-image zoomable-image" src="images/demo-card.svg" alt="Arrival transportation information" data-zoomable />
                 </div>
@@ -146,8 +146,8 @@
                   <h3>WiFi Information</h3>
                   <div class="wifi-card">
                     <strong>Main Network</strong>
-                    <div>WiFi Name: Demo Guest WiFi </div>
-                    <div>Password: sample-demo-only</div>
+                    <div>WiFi Name: Guest WiFi </div>
+                    <div>Password: Guest WiFi</div>
                   </div>
                 </div>
               </div>
@@ -237,20 +237,20 @@
 
         <div class="accordion" data-accordion data-theme="prep">
           <button class="accordion-header" data-toggle>
-            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></span><span class="label">Attendee Search</span></div>
+            <div class="left"><span class="circle-icon" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a3 3 0 0 1 3 3v15H6a2 2 0 0 1-2-1.5Z"/><path d="M8 7h8"/><path d="M8 11h8"/><path d="M8 15h5"/></svg></span><span class="label">Team Search</span></div>
             <span class="chevron" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
           <div class="accordion-body">
             <div class="content-card">
-              <h3>Attendee Search</h3>
-              <p class="section-note">Try searching: <button class="sample-name" type="button" data-sample-attendee="Maya Thompson">Maya Thompson</button>, <button class="sample-name" type="button" data-sample-attendee="Daniel Kim">Daniel Kim</button>, or <button class="sample-name" type="button" data-sample-attendee="Olivia Martinez">Olivia Martinez</button></p>
+              <h3>Team Search</h3>
+              <p class="section-note">Try searching: <button class="sample-name" type="button" data-sample-attendee="Alex Kim">Alex</button>, <button class="sample-name" type="button" data-sample-attendee="Jordan Lee">Jordan</button>, <button class="sample-name" type="button" data-sample-attendee="Taylor Smith">Taylor</button>, or <button class="sample-name" type="button" data-sample-attendee="Morgan Park">Morgan</button></p>
               <div class="search-box">
-                <input class="search-input" id="attendeeSearch" type="search" autocomplete="off" placeholder="Search by attendee name" />
+                <input class="search-input" id="attendeeSearch" type="search" autocomplete="off" placeholder="Search by team member name" />
                 <div class="autocomplete-list" id="attendeeSuggestions" hidden></div>
               </div>
               <button class="clear-search-button" id="clearAttendeeSearch" type="button">Clear Search</button>
               <div class="attendee-list" id="attendeeList" aria-live="polite">
-                <div class="info-box">Enter an attendee name to view sample assignment details.</div>
+                <div class="info-box">Enter a demo team member name to view sample assignment details.</div>
               </div>
             </div>
           </div>
@@ -301,8 +301,9 @@
                 <p class="section-note">This portfolio demo stores feedback only in this browser and does not send it to an external service.</p>
                 <label>Name <span>optional</span><input id="feedbackName" name="name" type="text" autocomplete="name" /></label>
                 <label>Overall experience <span>required</span><select id="feedbackExperience" name="experience" required><option value="">Select one</option><option>Excellent</option><option>Good</option><option>Okay</option><option>Needs improvement</option></select></label>
-                <label>Most helpful section <span>required</span><select id="feedbackSection" name="section" required><option value="">Select one</option><option>Announcements</option><option>Schedule</option><option>Event Guide</option><option>Attendee Search</option><option>Departure Transportation</option><option>Lodging</option><option>Meals</option></select></label>
+                <label>Most helpful section <span>required</span><select id="feedbackSection" name="section" required><option value="">Select one</option><option>Announcements</option><option>Schedule</option><option>Event Guide</option><option>Team Search</option><option>Departure Transportation</option><option>Lodging</option><option>Meals</option></select></label>
                 <label>Comments <span>optional</span><textarea id="feedbackComments" name="comments" rows="4"></textarea></label>
+                <a class="big-button" href="https://docs.google.com/forms/u/0/" target="_blank" rel="noopener">Open Demo Google Form</a>
                 <div class="feedback-actions">
                   <button class="big-button" type="submit">Submit Feedback</button>
                   <button class="secondary-button" id="resetFeedbackForm" type="button">Reset Form</button>
@@ -318,7 +319,7 @@
       <footer class="site-footer">
         <p><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> This demonstration uses fictional sample data and is not connected to the original event database.</p>
         <button class="logout-button" type="button" id="logoutButton">Log out</button>
-        <div>© Event Demo Event Information Portal Demo</div>
+        <div>© Event Demo Event Information Portal</div>
       </footer>
     </main>
   </div>

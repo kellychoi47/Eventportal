@@ -274,31 +274,18 @@ const demoData = {
     ]
   },
   attendees: [
-    { name: 'Maya Thompson', role: 'Participant', group: 'Blue Group', room: 'Room A-204', track: 'Leadership Track' },
-    { name: 'Daniel Kim', role: 'Participant', group: 'Green Group', room: 'Room B-118', track: 'Operations Track' },
-    { name: 'Olivia Martinez', role: 'Participant', group: 'Gold Group', room: 'Room A-212', track: 'Workshop Track' },
-    { name: 'Ethan Williams', role: 'Volunteer', group: 'Blue Group', room: 'Room C-101', track: 'Support Track' },
-    { name: 'Sophia Patel', role: 'Participant', group: 'Green Group', room: 'Room B-122', track: 'Leadership Track' },
-    { name: 'Marcus Johnson', role: 'Participant', group: 'Gold Group', room: 'Room A-208', track: 'Operations Track' },
-    { name: 'Chloe Anderson', role: 'Volunteer', group: 'Blue Group', room: 'Room C-104', track: 'Support Track' },
-    { name: 'Noah Lee', role: 'Participant', group: 'Green Group', room: 'Room B-120', track: 'Workshop Track' },
-    { name: 'Isabella Garcia', role: 'Participant', group: 'Gold Group', room: 'Room A-210', track: 'Leadership Track' },
-    { name: 'Liam Robinson', role: 'Participant', group: 'Blue Group', room: 'Room C-108', track: 'Operations Track' },
-    { name: 'Ava Nguyen', role: 'Volunteer', group: 'Green Group', room: 'Room B-124', track: 'Support Track' },
-    { name: 'Jordan Davis', role: 'Participant', group: 'Gold Group', room: 'Room A-206', track: 'Workshop Track' }
+    { name: 'Alex Kim', role: 'Team Lead', group: 'Blue Team', room: 'Room A-204', track: 'Morning Support' },
+    { name: 'Jordan Lee', role: 'Team Member', group: 'Green Team', room: 'Room B-118', track: 'Welcome Desk' },
+    { name: 'Taylor Smith', role: 'Team Member', group: 'Gold Team', room: 'Room A-212', track: 'Workshop Support' },
+    { name: 'Morgan Park', role: 'Team Lead', group: 'Blue Team', room: 'Room C-101', track: 'Logistics' },
+    { name: 'Casey Johnson', role: 'Team Member', group: 'Green Team', room: 'Room B-122', track: 'Evening Support' }
   ],
   transportation: [
     { time: '8:30 AM', title: 'Group A departure staging at the east entrance' },
     { time: '9:15 AM', title: 'Group B departure staging at the east entrance' },
     { time: '10:00 AM', title: 'Final luggage check and rideshare pickup window' }
   ],
-  weather: [
-    { date: '2026-06-07', high: 76, low: 62, condition: 'Partly cloudy', precip: 12 },
-    { date: '2026-06-08', high: 78, low: 63, condition: 'Sunny', precip: 8 },
-    { date: '2026-06-09', high: 75, low: 61, condition: 'Cloudy', precip: 18 },
-    { date: '2026-06-10', high: 77, low: 64, condition: 'Sunny', precip: 10 },
-    { date: '2026-06-11', high: 74, low: 60, condition: 'Partly cloudy', precip: 14 }
-  ]
+  weather: []
 };
 
 const closeSubTabs = (container) => {
@@ -593,14 +580,14 @@ const renderAttendeeResults = (query) => {
   const searchText = normalizeName(query);
 
   if (!searchText) {
-    attendeeList.innerHTML = '<div class="info-box">Enter an attendee name to view sample assignment details.</div>';
+    attendeeList.innerHTML = '<div class="info-box">Enter a demo team member name to view sample assignment details.</div>';
     return;
   }
 
   const matches = findAttendees(searchText);
   attendeeList.innerHTML = matches.length
     ? matches.map(renderAttendeeCard).join('')
-    : '<div class="info-box">No attendee found. Try Maya Thompson, Daniel Kim, or Olivia Martinez.</div>';
+    : '<div class="info-box">No team member found. Try Alex, Jordan, Taylor, or Morgan.</div>';
 };
 
 const renderAttendeeSuggestions = (query) => {
@@ -769,8 +756,24 @@ const formatForecastDate = (dateText) => {
   });
 };
 
+const weatherDescription = (code) => {
+  if ([0, 1].includes(code)) return 'Clear';
+  if ([2, 3].includes(code)) return 'Cloudy';
+  if ([45, 48].includes(code)) return 'Fog';
+  if ([51, 53, 55, 56, 57].includes(code)) return 'Drizzle';
+  if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return 'Rain';
+  if ([71, 73, 75, 77, 85, 86].includes(code)) return 'Snow';
+  if ([95, 96, 99].includes(code)) return 'Thunderstorm';
+  return 'Forecast';
+};
+
 const renderWeather = (days) => {
   if (!weatherList || !weatherRange) return;
+
+  if (!days.length) {
+    weatherList.innerHTML = '<div class="info-box">Weather could not load right now. Please check again later.</div>';
+    return;
+  }
 
   weatherRange.textContent = `${formatForecastDate(days[0].date)} - ${formatForecastDate(days[days.length - 1].date)}, Demo City, Demo State`;
   weatherList.innerHTML = days.map((day) => `
@@ -781,7 +784,39 @@ const renderWeather = (days) => {
     </div>
   `).join('');
 
-  if (weatherUpdated) weatherUpdated.textContent = 'Sample forecast for public demo';
+  if (weatherUpdated) {
+    weatherUpdated.textContent = `Updated ${new Date().toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit'
+    })}`;
+  }
+};
+
+const loadWeather = async () => {
+  if (!weatherList) return;
+
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=39.5000&longitude=-98.3500&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=America%2FNew_York&forecast_days=5';
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Weather request failed');
+
+    const data = await response.json();
+    const daily = data.daily || {};
+    const days = (daily.time || []).map((date, index) => ({
+      date,
+      high: daily.temperature_2m_max[index],
+      low: daily.temperature_2m_min[index],
+      precip: daily.precipitation_probability_max[index] ?? 0,
+      condition: weatherDescription(daily.weather_code[index])
+    }));
+
+    renderWeather(days);
+  } catch (error) {
+    weatherList.innerHTML = '<div class="info-box">Weather could not load right now. Please check again later.</div>';
+  }
 };
 
 const renderTransportation = () => {
@@ -838,4 +873,4 @@ renderDatedSection({
 });
 renderAttendeeResults('');
 renderTransportation();
-renderWeather(demoData.weather);
+loadWeather();
